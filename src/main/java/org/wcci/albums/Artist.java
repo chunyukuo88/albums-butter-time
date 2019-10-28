@@ -1,5 +1,6 @@
 package org.wcci.albums;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,6 +15,9 @@ public class Artist {
 	@GeneratedValue
 	private Long id;
 	private String name;
+	private LocalDate dateOfBirth;
+	private String recordLabel;
+	private String hometown;
 	@OneToMany(mappedBy="artist")
 	private List<Album> albums;
 	
@@ -29,6 +33,24 @@ public class Artist {
 
 	public Long getId() {
 		return id;
+	}
+
+	
+	
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public String getRecordLabel() {
+		return recordLabel;
+	}
+
+	public String getHometown() {
+		return hometown;
+	}
+
+	public List<Album> getAlbums() {
+		return albums;
 	}
 
 	@Override
