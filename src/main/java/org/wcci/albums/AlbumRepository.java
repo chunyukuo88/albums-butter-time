@@ -1,8 +1,10 @@
 package org.wcci.albums;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AlbumRepository extends CrudRepository {
+@Repository
+public interface AlbumRepository extends CrudRepository<Album, Long> {
 
 	
 }
