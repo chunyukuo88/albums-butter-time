@@ -18,6 +18,8 @@ public class JpaWiringTest {
 	private AlbumRepository albumRepo;
 	@Autowired
 	private ArtistRepository artistRepo;
+	@Autowired
+	private SongRepository songRepo;
 	
 	@Test
 	public void artistWillHaveAlbums() throws Exception {
@@ -32,5 +34,23 @@ public class JpaWiringTest {
 		 Artist receivedArtist = artistRepo.findById(testArtist.getId()).get(); 
 		 
 		 assertEquals(testArtist, receivedArtist);
+	}
+	
+	@Test
+	public void albumsHaveSongs() {
+		Artist testArtist = new Artist("Chuck Norris");
+		Song testSong = new Song("Beating Bruce Lee", 1000, testArtist);
+		Album testAlbum1 = new Album("Roundhouse Kicks II", testArtist);
+		
+		 albumRepo.save(testAlbum1);
+		 songRepo.save(testSong);
+		 artistRepo.save(testArtist);
+
+		 entityManager.flush();
+		 entityManager.clear();
+		 
+		 Song addedSong = songRepo.findById(testSong.getId()).get();
+		 
+		 assertEquals(testSong, addedSong);
 	}
 }
