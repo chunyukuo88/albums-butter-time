@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Song {
 
@@ -15,16 +17,17 @@ public class Song {
 	private String link;
 	private int duration;
 
+	@JsonIgnore
 	@ManyToOne
-	private Artist artist;
+	private Album album;
 
 	protected Song() {
 	}
 
-	public Song(String title, int duration, Artist artist) {
+	public Song(String title, int duration, Album album) {
 		this.duration = duration;
 		this.title = title;
-		this.artist = artist;
+		this.album = album;
 	}
 
 	public Long getId() {
@@ -43,15 +46,15 @@ public class Song {
 		return duration;
 	}
 
-	public Artist getArtist() {
-		return artist;
+	public Album getAlbum() {
+		return this.album;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
+		result = prime * result + ((album == null) ? 0 : album.hashCode());
 		result = prime * result + duration;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((link == null) ? 0 : link.hashCode());
@@ -68,10 +71,10 @@ public class Song {
 		if (getClass() != obj.getClass())
 			return false;
 		Song other = (Song) obj;
-		if (artist == null) {
-			if (other.artist != null)
+		if (album == null) {
+			if (other.album != null)
 				return false;
-		} else if (!artist.equals(other.artist))
+		} else if (!album.equals(other.album))
 			return false;
 		if (duration != other.duration)
 			return false;
