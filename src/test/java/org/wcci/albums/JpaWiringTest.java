@@ -1,16 +1,22 @@
 package org.wcci.albums;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class JpaWiringTest {
-
-	private Album albumRepo;
+	@Autowired
+	private TestEntityManager entityManager;
+	@Autowired
+	private AlbumRepository albumRepo;
+	@Autowired
 	private ArtistRepository artistRepo;
 	
 	@Test
@@ -19,5 +25,12 @@ public class JpaWiringTest {
 		 Album testAlbum1 = new Album("Roundhouse Kicks II", testArtist);
 		 testArtist = artistRepo.save(testArtist);
 		 testAlbum1 = albumRepo.save(testAlbum1);
+		 
+		 entityManager.flush();
+		 entityManager.clear();
+		 
+		 Artist receivedArtist = artistRepo.findById(testArtist.getId()).get(); 
+		 
+		 assertEquals(testArtist, receivedArtist);
 	}
 }
