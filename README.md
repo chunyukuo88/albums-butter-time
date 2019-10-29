@@ -1,4 +1,4 @@
-# albums-butter-time
+# Albums
 
 ## Module 5 Team Project: Butter Time
 
