@@ -8,22 +8,39 @@ import org.springframework.stereotype.Component;
 public class Populator implements CommandLineRunner{
 
 	@Autowired
-	private ArtistRepository artistRepo;
+	private ArtistStorage artistStorage;
 	@Autowired
-	private AlbumRepository albumRepo;
+	private AlbumStorage albumStorage;
 	@Autowired
-	private SongRepository songRepo;
+	private SongStorage songStorage;
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Artist artist = new Artist("Chuck Norris");
+		artistStorage.addArtist(artist);
+		
+		Album album = new Album("Chucky Gets Lucky", artist);
+		albumStorage.addAlbum(album);
+		
+		Song song = new Song("My first song", 90, album);
+		songStorage.addSong(song);
 
-		Artist testArtist = new Artist("Nuck Chorris");
+		artist = new Artist("Nuck Chorris");		
+		album = new Album("Annihilating Entire Karate Schools", artist);		
+		artistStorage.addArtist(artist);		
+		albumStorage.addAlbum(album);
 		
-		Album testAlbum1 = new Album("Annihilating Entire Karate Schools", testArtist);
+		artist = new Artist("George Straaaaateeee");
+		album = new Album("Country Twang", artist);
+		song = new Song("Booyah", 260, album);
 		
-		testArtist = artistRepo.save(testArtist);
+		artist = new Artist("Maurice Ravl");
+		album = new Album("Orchestral Works", artist);
+		song = new Song("First Piano Concerto", 2500, album);
 		
-		testAlbum1 = albumRepo.save(testAlbum1);
+		
+		
 	}
 
 }
