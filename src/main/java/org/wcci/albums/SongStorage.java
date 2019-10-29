@@ -12,9 +12,18 @@ public class SongStorage {
 	public void addSong(Song song) {
 		songRepo.save(song);		
 	}
+	
+	public void removeSong(Song song) {
+		songRepo.delete(song);
+	}
 
 	public Iterable<Song> findAllSongs() {
 		return songRepo.findAll();
+	}
+
+	public Song findSongById(Long id) {
+		Song song = songRepo.findById(id).get();
+		return song;
 	}
 		
 	
