@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,8 +19,12 @@ public class Artist {
 	private LocalDate dateOfBirth;
 	private String recordLabel;
 	private String hometown;
+	
 	@OneToMany(mappedBy="artist")
 	private List<Album> albums;
+	
+	@ManyToMany
+	private List<Tag> tags;
 	
 	protected Artist () {}
 	
@@ -53,6 +58,10 @@ public class Artist {
 		return albums;
 	}
 
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

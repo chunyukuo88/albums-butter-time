@@ -25,6 +25,9 @@ public class Song {
 	private Album album;
 	
 	@ManyToMany
+	private List<Tag> tags;
+	
+	@ManyToMany
 	private List<Ratings> ratings;
 
 	protected Song() {
@@ -56,6 +59,10 @@ public class Song {
 		return this.album;
 	}
 
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -26,6 +26,8 @@ public class Album {
 	private Artist artist;
 	@ManyToMany
 	private List<Ratings> ratings;
+	@ManyToMany
+	private List<Tag> tags;
 
 	protected Album () {}
 	
@@ -33,8 +35,6 @@ public class Album {
 		this.title = title;
 		this.artist = artist;
 	}
-	
-	
 	
 	public String getTitle() {
 		return title;
@@ -55,6 +55,10 @@ public class Album {
 		return publishYear;
 	}
 
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +95,5 @@ public class Album {
 			return false;
 		return true;
 	}
-	
 	
 }
