@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -23,6 +24,8 @@ public class Album {
 	@JsonIgnore
 	@ManyToOne
 	private Artist artist;
+	@ManyToMany
+	private List<Ratings> ratings;
 
 	protected Album () {}
 	

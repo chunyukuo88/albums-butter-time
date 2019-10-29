@@ -1,8 +1,11 @@
 package org.wcci.albums;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,6 +23,9 @@ public class Song {
 	@JsonIgnore
 	@ManyToOne
 	private Album album;
+	
+	@ManyToMany
+	private List<Ratings> ratings;
 
 	protected Song() {
 	}
