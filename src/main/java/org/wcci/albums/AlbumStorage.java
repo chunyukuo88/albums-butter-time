@@ -20,5 +20,9 @@ public class AlbumStorage {
 	public Iterable<Album> findAllAlbums() {
 		return albumRepo.findAll();
 	}
+	
+	public Album findAlbumById(Long id) {
+		return albumRepo.findById(id).get();
+	}
 
 }
