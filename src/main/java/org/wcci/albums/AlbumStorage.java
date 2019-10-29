@@ -25,4 +25,8 @@ public class AlbumStorage {
 		return albumRepo.findById(id).get();
 	}
 
+	public void addTag(Tag tag, Album album) {
+		album.addTag(tag);
+		albumRepo.save(album);
+	}
 }
