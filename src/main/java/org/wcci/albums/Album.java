@@ -2,6 +2,7 @@ package org.wcci.albums;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,6 +29,8 @@ public class Album {
 	private List<Ratings> ratings;
 	@ManyToMany
 	private List<Tag> tags;
+	@Embedded
+	private List<Comment> comments;
 
 	protected Album () {}
 	
@@ -53,6 +56,18 @@ public class Album {
 
 	public int getPublishYear() {
 		return publishYear;
+	}
+	
+	public List<Ratings> getRatings() {
+		return ratings;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
 	}
 
 	public void addTag(Tag tag) {
@@ -94,6 +109,10 @@ public class Album {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	public void addComment(Comment comment) {
+		comments.add(comment);
 	}
 	
 }
