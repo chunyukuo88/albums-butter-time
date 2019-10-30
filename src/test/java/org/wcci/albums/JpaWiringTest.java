@@ -68,7 +68,7 @@ public class JpaWiringTest {
 		albumRepo.save(testAlbum1);
 
 		Tag testTag = new Tag("Anthem");
-		tagRepo.save(testTag);
+		tagStorage.add(testTag);
 		
 		tagStorage.addAlbum(testAlbum1);
 
