@@ -68,14 +68,17 @@ public class JpaWiringTest {
 		albumRepo.save(testAlbum1);
 
 		Tag testTag = new Tag("Anthem");
-		tagStorage.add(testTag);
+
+		tagStorage.addTag(testTag);
+
+
 		
-		tagStorage.addAlbum(testAlbum1);
+		testAlbum1.addTag(testTag);
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Tag addedTag = tagRepo.findById(testTag.getId()).get();
+		Tag addedTag = tagStorage.findTagById(testTag.getId()); 
 
 		assertEquals(testTag, addedTag);
 	}
