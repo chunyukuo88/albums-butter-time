@@ -1,4 +1,4 @@
-package org.wcci.albums;
+package org.wcci.albums.entities;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Ratings {
+public class Rating {
 	@Id
 	@GeneratedValue
 	private Long Id;
@@ -26,10 +26,10 @@ public class Ratings {
 	private List<Song> songs;
 	
 
-	protected Ratings() {
+	protected Rating() {
 	}
 	
-	public Ratings(int rating) {
+	public Rating(int rating) {
 		this.rating = rating;
 	}
 

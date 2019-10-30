@@ -23,6 +23,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.wcci.albums.controllers.AlbumController;
+import org.wcci.albums.entities.Album;
+import org.wcci.albums.entities.Artist;
+import org.wcci.albums.storages.AlbumStorage;
 
 public class AlbumControllerTest {
 	@InjectMocks
