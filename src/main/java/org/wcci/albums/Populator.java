@@ -3,6 +3,14 @@ package org.wcci.albums;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.wcci.albums.entities.Album;
+import org.wcci.albums.entities.Artist;
+import org.wcci.albums.entities.Rating;
+import org.wcci.albums.entities.Song;
+import org.wcci.albums.storages.AlbumStorage;
+import org.wcci.albums.storages.ArtistStorage;
+import org.wcci.albums.storages.RatingStorage;
+import org.wcci.albums.storages.SongStorage;
 
 @Component
 public class Populator implements CommandLineRunner{
@@ -14,7 +22,7 @@ public class Populator implements CommandLineRunner{
 	@Autowired
 	private SongStorage songStorage;
 	@Autowired
-	private RatingsStorage ratingsStorage;
+	private RatingStorage ratingsStorage;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -28,19 +36,19 @@ public class Populator implements CommandLineRunner{
 		Song song = new Song("My first song", 90, album);
 		songStorage.addSong(song);
 		
-		Ratings rating = new Ratings(5);
+		Rating rating = new Rating(5);
 		ratingsStorage.addRatings(rating);
 		
-		rating = new Ratings(4);
+		rating = new Rating(4);
 		ratingsStorage.addRatings(rating);
 		
-		rating = new Ratings(3);
+		rating = new Rating(3);
 		ratingsStorage.addRatings(rating);
 		
-		rating = new Ratings(2);
+		rating = new Rating(2);
 		ratingsStorage.addRatings(rating);
 		
-		rating = new Ratings(1);
+		rating = new Rating(1);
 		ratingsStorage.addRatings(rating);
 		
 
@@ -52,8 +60,8 @@ public class Populator implements CommandLineRunner{
 		artist = new Artist("George Straaaaateeee");
 		album = new Album("Country Twang", artist);
 		song = new Song("Booyah", 260, album);
-		Comment comment = new Comment("Internet Troll", "This is my favorite.");
-		albumStorage.addComment(album, comment);
+//		Comment comment = new Comment("Internet Troll", "This is my favorite.");
+//		albumStorage.addComment(album, comment);
 		
 		artist = new Artist("Maurice Ravel");
 		album = new Album("Orchestral Works", artist);

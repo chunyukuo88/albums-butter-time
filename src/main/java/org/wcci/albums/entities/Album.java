@@ -1,7 +1,8 @@
-package org.wcci.albums;
+package org.wcci.albums.entities;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,15 +23,15 @@ public class Album {
 	private List<Song> songList;
 	private int publishYear;
 	private String title;
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne
 	private Artist artist;
 	@ManyToMany
-	private List<Ratings> ratings;
+	private List<Rating> ratings;
 	@ManyToMany
 	private List<Tag> tags;
-	@Embedded
-	private List<Comment> comments;
+//	@ElementCollection
+//	private List<Comment> comments;
 
 	protected Album () {}
 	
@@ -58,7 +59,7 @@ public class Album {
 		return publishYear;
 	}
 	
-	public List<Ratings> getRatings() {
+	public List<Rating> getRatings() {
 		return ratings;
 	}
 
@@ -66,12 +67,16 @@ public class Album {
 		return tags;
 	}
 
-	public List<Comment> getComments() {
-		return comments;
-	}
+//	public List<Comment> getComments() {
+//		return comments;
+//	}
 
 	public void addTag(Tag tag) {
 		this.tags.add(tag);
+	}
+	
+	public void addRating(Rating rating) {
+		this.ratings.add(rating);
 	}
 	
 	@Override
@@ -111,8 +116,8 @@ public class Album {
 		return true;
 	}
 
-	public void addComment(Comment comment) {
-		comments.add(comment);
-	}
+//	public void addComment(Comment comment) {
+//		comments.add(comment);
+//	}
 	
 }

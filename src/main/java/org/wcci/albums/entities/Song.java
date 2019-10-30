@@ -1,4 +1,4 @@
-package org.wcci.albums;
+package org.wcci.albums.entities;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class Song {
 	private List<Tag> tags;
 	
 	@ManyToMany
-	private List<Ratings> ratings;
+	private List<Rating> ratings;
 
 	protected Song() {
 	}
