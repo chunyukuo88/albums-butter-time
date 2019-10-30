@@ -23,7 +23,7 @@ public class Album {
 	private List<Song> songList;
 	private int publishYear;
 	private String title;
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToOne
 	private Artist artist;
 	@ManyToMany
