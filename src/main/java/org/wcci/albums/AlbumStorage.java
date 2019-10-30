@@ -29,4 +29,9 @@ public class AlbumStorage {
 		album.addTag(tag);
 		albumRepo.save(album);
 	}
+	
+	public void addComment(Album album, Comment comment) {
+		album.addComment(comment);
+		albumRepo.save(album);
+	}
 }
