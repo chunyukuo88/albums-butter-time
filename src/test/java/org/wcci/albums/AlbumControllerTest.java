@@ -83,7 +83,7 @@ public class AlbumControllerTest {
 //	@Ignore
 	 @Test
 	    public void addCommentAddsCommentsToSelectedAlbum()throws Exception {
-//	        when(albumStorage.findAlbumById(1L)).thenReturn(testAlbum);
+	        when(albumStorage.findAlbumById(1L)).thenReturn(testAlbum);
 //	        when(albumStorage.addAlbum(testAlbum)).thenReturn(testAlbum);
 	        albumStorage.addAlbum(testAlbum);
 	        
