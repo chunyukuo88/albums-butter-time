@@ -34,8 +34,9 @@ public class AlbumStorage {
 		albumRepo.save(album);
 	}
 	
-	public void addComment(Comment comment, Album album) {
+	public Album addComment(Comment comment, Album album) {
 		album.addComment(comment);
-		albumRepo.save(album);
+		return albumRepo.save(album);
+		
 	}
 }

@@ -27,6 +27,7 @@ import org.wcci.albums.controllers.AlbumController;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Artist;
 import org.wcci.albums.entities.Comment;
+import org.wcci.albums.repositories.AlbumRepository;
 import org.wcci.albums.storages.AlbumStorage;
 
 public class AlbumControllerTest {
@@ -35,12 +36,14 @@ public class AlbumControllerTest {
 	
 	@Mock
 	private AlbumStorage albumStorage;
-
+	
 	private Album testAlbum;
 
 	private MockMvc mockMvc;
 	// Still useful even though this isn't an MVC app because it will send requests
 	// to the server and get responses back.
+	@Mock
+	private AlbumRepository albumRepo;
 
 	@Before
 	public void setup() {
@@ -83,13 +86,16 @@ public class AlbumControllerTest {
 //	@Ignore
 	 @Test
 	    public void addCommentAddsCommentsToSelectedAlbum()throws Exception {
-	        when(albumStorage.findAlbumById(1L)).thenReturn(testAlbum);
+			Album mockAlbum = mock(Album.class);
+			when(mockAlbum.getId()).thenReturn(1L);
+	        when(albumStorage.findAlbumById(1L)).thenReturn(mockAlbum);
 //	        when(albumStorage.addAlbum(testAlbum)).thenReturn(testAlbum);
-	        albumStorage.addAlbum(testAlbum);
+	        albumStorage.addAlbum(mockAlbum);
 	        
 	        Comment testComment = new Comment("TESTING", "TESTY");
-	        Album commentedOnAlbum = underTest.addComment(testAlbum.getId(), testComment);
-	        assertThat(commentedOnAlbum.getComments(), contains(testComment));
+	        Album commentedOnAlbum = underTest.addComment(mockAlbum.getId(), testComment);
+	        verify(albumStorage).addComment(testComment, mockAlbum);
+//	      	        assertThat(commentedOnAlbum.getComments(), contains(testComment));
 	    }
 
 }

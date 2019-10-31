@@ -32,8 +32,8 @@ public class AlbumController {
 	@PatchMapping("/{id}/add-comment")
 	public Album addComment(@PathVariable long id, @RequestBody Comment comment) {
 		Album album = albumStorage.findAlbumById(id);
-		albumStorage.addComment(comment, album);
-		return album;
+		return albumStorage.addComment(comment, album);
+		
 		
 	}
 
