@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,6 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.albums.controllers.AlbumController;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Artist;
+import org.wcci.albums.entities.Comment;
 import org.wcci.albums.storages.AlbumStorage;
 
 public class AlbumControllerTest {
@@ -79,13 +80,16 @@ public class AlbumControllerTest {
 			   .andExpect(jsonPath("$.title", is(equalTo("Test Album"))));
 		// $ represents the json body
 	}
+//	@Ignore
 	 @Test
-	    public void addCommentAddsCommentsToSelectedArtist() {
-	        when(albumStorage.findAlbumById(1L)).thenReturn(testAlbum);
-	        when(albumStorage.addAlbum(testAlbum)).thenReturn(testAlbum);
+	    public void addCommentAddsCommentsToSelectedAlbum()throws Exception {
+//	        when(albumStorage.findAlbumById(1L)).thenReturn(testAlbum);
+//	        when(albumStorage.addAlbum(testAlbum)).thenReturn(testAlbum);
+	        albumStorage.addAlbum(testAlbum);
+	        
 	        Comment testComment = new Comment("TESTING", "TESTY");
-	        Artist commentedOnArtist = underTest.addComment(1L, testComment);
-	        assertThat(commentedOnArtist.getComments(), contains(testComment));
+	        Album commentedOnAlbum = underTest.addComment(testAlbum.getId(), testComment);
+	        assertThat(commentedOnAlbum.getComments(), contains(testComment));
 	    }
 
 }
