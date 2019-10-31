@@ -79,5 +79,13 @@ public class AlbumControllerTest {
 			   .andExpect(jsonPath("$.title", is(equalTo("Test Album"))));
 		// $ represents the json body
 	}
+	 @Test
+	    public void addCommentAddsCommentsToSelectedArtist() {
+	        when(albumStorage.findAlbumById(1L)).thenReturn(testAlbum);
+	        when(albumStorage.addAlbum(testAlbum)).thenReturn(testAlbum);
+	        Comment testComment = new Comment("TESTING", "TESTY");
+	        Artist commentedOnArtist = underTest.addComment(1L, testComment);
+	        assertThat(commentedOnArtist.getComments(), contains(testComment));
+	    }
 
 }
