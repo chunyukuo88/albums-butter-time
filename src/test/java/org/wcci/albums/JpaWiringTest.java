@@ -2,7 +2,6 @@ package org.wcci.albums;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,6 @@ public class JpaWiringTest {
 	@Autowired
 	private TagStorage tagStorage;
 
-	@Ignore
 	@Test
 	public void artistWillHaveAlbums() throws Exception {
 		Artist testArtist = new Artist("Chuck Norris");
@@ -48,7 +46,7 @@ public class JpaWiringTest {
 		assertEquals(testArtist, receivedArtist);
 	}
 
-	@Ignore
+	
 	@Test
 	public void albumsHaveSongs() {
 		Artist testArtist = new Artist("Chuck Norris");
@@ -68,7 +66,7 @@ public class JpaWiringTest {
 		assertEquals(testSong, addedSong);
 	}
 
-	@Ignore
+
 	@Test
 	public void anAlbumHasATag() {
 		Artist testArtist = new Artist("Chuck Norris");

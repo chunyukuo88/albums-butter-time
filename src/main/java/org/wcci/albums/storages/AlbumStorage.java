@@ -1,12 +1,12 @@
 package org.wcci.albums.storages;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Tag;
 import org.wcci.albums.repositories.AlbumRepository;
 
-@Service
+@Repository
 public class AlbumStorage {
 
 	@Autowired
