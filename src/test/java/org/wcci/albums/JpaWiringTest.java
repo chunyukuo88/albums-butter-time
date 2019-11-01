@@ -2,7 +2,6 @@ package org.wcci.albums;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,10 @@ import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Artist;
 import org.wcci.albums.entities.Song;
 import org.wcci.albums.entities.Tag;
+import org.wcci.albums.repositories.AlbumRepository;
+import org.wcci.albums.repositories.ArtistRepository;
+import org.wcci.albums.repositories.SongRepository;
+import org.wcci.albums.repositories.TagRepository;
 import org.wcci.albums.storages.AlbumStorage;
 import org.wcci.albums.storages.ArtistStorage;
 import org.wcci.albums.storages.SongStorage;
@@ -24,69 +27,68 @@ public class JpaWiringTest {
 	@Autowired
 	private TestEntityManager entityManager;
 	@Autowired
-	private AlbumStorage albumStorage;
+	private AlbumRepository albumStorage;
 	@Autowired
-	private ArtistStorage artistStorage;
+	private ArtistRepository artistStorage;
 	@Autowired
-	private SongStorage songStorage;
+	private SongRepository songStorage;
 	@Autowired
-	private TagStorage tagStorage;
+	private TagRepository tagStorage;
 
-	@Ignore 
+
 	@Test
 	public void artistWillHaveAlbums() throws Exception {
 		Artist testArtist = new Artist("Chuck Norris");
 		Album testAlbum1 = new Album("Roundhouse Kicks II", testArtist);
-		artistStorage.addArtist(testArtist);
-		albumStorage.addAlbum(testAlbum1);
+		artistStorage.save(testArtist);
+		albumStorage.save(testAlbum1);
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Artist receivedArtist = artistStorage.findArtistById(testArtist.getId());
+		Artist receivedArtist = artistStorage.findById(testArtist.getId()).get();
 
 		assertEquals(testArtist, receivedArtist);
 	}
 
-	@Ignore
+	
 	@Test
 	public void albumsHaveSongs() {
 		Artist testArtist = new Artist("Chuck Norris");
-		artistStorage.addArtist(testArtist);
+		artistStorage.save(testArtist);
 
 		Album testAlbum1 = new Album("Roundhouse Kicks II", testArtist);
-		albumStorage.addAlbum(testAlbum1);
+		albumStorage.save(testAlbum1);
 
 		Song testSong = new Song("Beating Bruce Lee", 1000, testAlbum1);
-		songStorage.addSong(testSong);
+		songStorage.save(testSong);
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Song addedSong = songStorage.findSongById(testSong.getId());
+		Song addedSong = songStorage.findById(testSong.getId()).get();
 
 		assertEquals(testSong, addedSong);
 	}
 
-	@Ignore 
 	@Test
 	public void anAlbumHasATag() {
 		Artist testArtist = new Artist("Chuck Norris");
-		artistStorage.addArtist(testArtist);
+		artistStorage.save(testArtist);
 
 		Album testAlbum1 = new Album("Roundhouse Kicks II", testArtist);
-		albumStorage.addAlbum(testAlbum1);
+		albumStorage.save(testAlbum1);
 
 		Tag testTag = new Tag("Anthem");
 
-		tagStorage.addTag(testTag);
+		tagStorage.save(testTag);
 
 		testAlbum1.addTag(testTag);
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Tag addedTag = tagStorage.findTagById(testTag.getId());
+		Tag addedTag = tagStorage.findById(testTag.getId()).get();
 
 		assertEquals(testTag, addedTag);
 	}
