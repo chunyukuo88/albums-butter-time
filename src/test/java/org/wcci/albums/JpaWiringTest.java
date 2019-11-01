@@ -35,6 +35,7 @@ public class JpaWiringTest {
 	@Autowired
 	private TagRepository tagStorage;
 
+
 	@Test
 	public void artistWillHaveAlbums() throws Exception {
 		Artist testArtist = new Artist("Chuck Norris");
@@ -69,7 +70,6 @@ public class JpaWiringTest {
 
 		assertEquals(testSong, addedSong);
 	}
-
 
 	@Test
 	public void anAlbumHasATag() {

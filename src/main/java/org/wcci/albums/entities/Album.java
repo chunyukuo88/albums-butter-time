@@ -30,8 +30,8 @@ public class Album {
 	private List<Rating> ratings;
 	@ManyToMany
 	private List<Tag> tags;
-//	@ElementCollection
-//	private List<Comment> comments;
+	@ElementCollection
+	private List<Comment> comments;
 
 	protected Album () {}
 	
@@ -67,9 +67,9 @@ public class Album {
 		return tags;
 	}
 
-//	public List<Comment> getComments() {
-//		return comments;
-//	}
+	public List<Comment> getComments() {
+		return comments;
+	}
 
 	public void addTag(Tag tag) {
 		this.tags.add(tag);
@@ -116,8 +116,9 @@ public class Album {
 		return true;
 	}
 
-//	public void addComment(Comment comment) {
-//		comments.add(comment);
-//	}
+
+	public void addComment(Comment comment) {
+		comments.add(comment);
+	}
 	
 }
