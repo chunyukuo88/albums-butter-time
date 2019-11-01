@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,6 +26,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.albums.controllers.AlbumController;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Artist;
+import org.wcci.albums.entities.Comment;
+import org.wcci.albums.repositories.AlbumRepository;
 import org.wcci.albums.storages.AlbumStorage;
 
 public class AlbumControllerTest {
@@ -34,12 +36,14 @@ public class AlbumControllerTest {
 	
 	@Mock
 	private AlbumStorage albumStorage;
-
+	
 	private Album testAlbum;
 
 	private MockMvc mockMvc;
 	// Still useful even though this isn't an MVC app because it will send requests
 	// to the server and get responses back.
+	@Mock
+	private AlbumRepository albumRepo;
 
 	@Before
 	public void setup() {
@@ -79,5 +83,19 @@ public class AlbumControllerTest {
 			   .andExpect(jsonPath("$.title", is(equalTo("Test Album"))));
 		// $ represents the json body
 	}
+//	@Ignore
+	 @Test
+	    public void addCommentAddsCommentsToSelectedAlbum()throws Exception {
+			Album mockAlbum = mock(Album.class);
+			when(mockAlbum.getId()).thenReturn(1L);
+	        when(albumStorage.findAlbumById(1L)).thenReturn(mockAlbum);
+//	        when(albumStorage.addAlbum(testAlbum)).thenReturn(testAlbum);
+	        albumStorage.addAlbum(mockAlbum);
+	        
+	        Comment testComment = new Comment("TESTING", "TESTY");
+	        Album commentedOnAlbum = underTest.addComment(mockAlbum.getId(), testComment);
+	        verify(albumStorage).addComment(testComment, mockAlbum);
+//	      	        assertThat(commentedOnAlbum.getComments(), contains(testComment));
+	    }
 
 }
