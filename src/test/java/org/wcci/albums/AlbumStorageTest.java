@@ -39,7 +39,7 @@ public class AlbumStorageTest {
 			underTest.findAlbumById(1L);
 			fail("Exception not thrown.");
 		} catch (AlbumNotFound e) {
-			assertThat(e.getMessage(), is(equalTo("No album found")));
+			assertThat(e.getMessage(), is(equalTo("Album not found")));
 		}
 	}
 }
