@@ -18,8 +18,8 @@ public class AlbumStorage {
 	@Autowired
 	private AlbumRepository albumRepo;
 
-	public void addAlbum(Album album) {
-		albumRepo.save(album);
+	public Album addAlbum(Album album) {
+		return albumRepo.save(album);
 	}
 		
 //	public void removeAlbum(Album album) {
