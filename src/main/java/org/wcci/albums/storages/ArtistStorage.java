@@ -14,8 +14,8 @@ public class ArtistStorage {
 	@Autowired
 	private ArtistRepository artistRepo;
 
-	public void addArtist(Artist artist) {
-		artistRepo.save(artist);
+	public Artist addArtist(Artist artist) {
+		return artistRepo.save(artist);
 	}
 
 	public void removeArtist(Artist artist) {
@@ -33,5 +33,11 @@ public class ArtistStorage {
 		}
 
 		return artist.get();
+	}
+
+	public Artist updateArtistName(Artist artist, String name) {
+		artist.updateArtistName(name);
+		artistRepo.save(artist);
+		return artist;
 	}
 }
