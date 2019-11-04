@@ -1,20 +1,25 @@
 package org.wcci.albums.storages;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Comment;
+import org.wcci.albums.entities.Song;
 import org.wcci.albums.entities.Tag;
+import org.wcci.albums.exception.AlbumNotFound;
+import org.wcci.albums.exception.SongNotFound;
 import org.wcci.albums.repositories.AlbumRepository;
 
-@Service
+@Repository
 public class AlbumStorage {
 
 	@Autowired
 	private AlbumRepository albumRepo;
 
-	public void addAlbum(Album album) {
-		albumRepo.save(album);
+	public Album addAlbum(Album album) {
+		return albumRepo.save(album);
 	}
 		
 //	public void removeAlbum(Album album) {
@@ -26,9 +31,13 @@ public class AlbumStorage {
 	}
 	
 	public Album findAlbumById(Long id) {
+		Optional<Album> album= albumRepo.findById(id);
+		if(!album.isPresent()) {
+			throw new AlbumNotFound("Album not found");
+		}
 		return albumRepo.findById(id).get();
 	}
-
+	
 	public void addTag(Tag tag, Album album) {
 		album.addTag(tag);
 		albumRepo.save(album);
