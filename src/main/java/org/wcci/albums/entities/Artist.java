@@ -60,6 +60,10 @@ public class Artist {
 		this.tags.add(tag);
 	}
 	
+	public void updateArtistName(String name) {
+		this.name = name;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,6 +94,5 @@ public class Artist {
 			return false;
 		return true;
 	}
-	
-	
+
 }
