@@ -3,7 +3,9 @@ package org.wcci.albums.storages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.wcci.albums.entities.Song;
+import org.wcci.albums.exception.SongNotFound;
 import org.wcci.albums.repositories.SongRepository;
+import java.util.Optional;
 
 @Repository
 public class SongStorage {
@@ -24,9 +26,15 @@ public class SongStorage {
 	}
 
 	public Song findSongById(Long id) {
-		Song song = songRepo.findById(id).get();
-		return song;
+		Optional<Song> song = songRepo.findById(id); 
+		if(!song.isPresent()) {
+			throw new SongNotFound("Song not found");
+		}
+		
+		return song.get();
 	}
+	
+	
 		
 
 }
