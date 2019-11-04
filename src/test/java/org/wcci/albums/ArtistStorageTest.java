@@ -13,19 +13,19 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.wcci.albums.entities.Song;
-import org.wcci.albums.exception.SongNotFound;
-import org.wcci.albums.repositories.SongRepository;
-import org.wcci.albums.storages.SongStorage;
+import org.wcci.albums.entities.Artist;
+import org.wcci.albums.exception.ArtistNotFound;
+import org.wcci.albums.repositories.ArtistRepository;
+import org.wcci.albums.storages.ArtistStorage;
 
-public class SongStorageTest {
+public class ArtistStorageTest {
 	
     @InjectMocks
-    private SongStorage underTest;
+    private ArtistStorage underTest;
     @Mock
-    private SongRepository songRepo;
+    private ArtistRepository artistRepo;
     @Mock
-    private Song mockSong;
+    private Artist mockArtist;
 
     @Before
     public void setup() {
@@ -33,13 +33,13 @@ public class SongStorageTest {
     }
 	
 	@Test
-	public void shouldThrowNotFoundExceptionWhenSongNonexistent() {
-		when(songRepo.findById(1L)).thenReturn(Optional.empty());
+	public void shouldThrowNotFoundExceptionWhenArtistNonexistent() {
+		when(artistRepo.findById(1L)).thenReturn(Optional.empty());
 		try {
-			underTest.findSongById(1L);
+			underTest.findArtistById(1L);
 			fail("Exception not thrown.");
-		} catch (SongNotFound e) {
-			assertThat(e.getMessage(), is(equalTo("Song not found")));
+		} catch (ArtistNotFound e) {
+			assertThat(e.getMessage(), is(equalTo("Artist not found")));
 		}
 	}
 }
