@@ -1,11 +1,14 @@
 package org.wcci.albums.entities;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Lob;
 
 @Embeddable
 public class Comment {
 
 	private String commentator;
+	
+	@Lob
 	private String opinion;
 	
 	public Comment() {}

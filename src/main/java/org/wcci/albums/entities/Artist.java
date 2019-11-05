@@ -3,6 +3,7 @@ package org.wcci.albums.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Artist {
 	private String recordLabel;
 	private String hometown;
 	
-	@OneToMany(mappedBy="artist")
+	@OneToMany(mappedBy="artist", cascade = CascadeType.ALL)
 	private List<Album> albums;
 	
 	@ManyToMany

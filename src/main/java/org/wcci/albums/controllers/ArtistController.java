@@ -1,6 +1,7 @@
 package org.wcci.albums.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +39,7 @@ public class ArtistController {
 		return artistStorage.addArtist(artist);
 	}
 	
-	@PostMapping("/{id}/remove")
+	@DeleteMapping("/{id}/remove")
 	public void removeArtist(@PathVariable Long id) {
 		Artist artist = artistStorage.findArtistById(id);
 		artistStorage.removeArtist(artist);
