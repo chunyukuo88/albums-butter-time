@@ -49,7 +49,6 @@ public class ArtistStorage {
 	}
 
 	public Artist updateArtistAll(Artist artist, String name, String recordLabel, String hometown) {
-//		artist.updateArtistDob(dob);
 		artist.updateArtistHometown(hometown);
 		artist.updateArtistName(name);
 		artist.updateArtistRecordLabel(recordLabel);

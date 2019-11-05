@@ -53,8 +53,8 @@ public class ArtistController {
 	}
 
 	@PostMapping("/{id}/{name}/{RecordLabel}/{Hometown}")
-	public Artist editAll(@PathVariable Long id, @PathVariable String name, 
-			@PathVariable String RecordLabel, @PathVariable String Hometown) {
+	public Artist editAll(@PathVariable Long id, @PathVariable String name, @PathVariable String RecordLabel,
+			@PathVariable String Hometown) {
 		Artist artist = artistStorage.findArtistById(id);
 		return artistStorage.updateArtistAll(artist, name, RecordLabel, Hometown);
 	}
