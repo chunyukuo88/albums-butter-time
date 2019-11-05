@@ -1,5 +1,6 @@
 package org.wcci.albums.storages;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class ArtistStorage {
 	}
 
 	public void removeArtist(Artist artist) {
-		albumStorage.removeAlbumsByArtist(artist);		
+		albumStorage.removeAlbumsByArtist(artist);
 		artistRepo.delete(artist);
 	}
 
@@ -43,6 +44,14 @@ public class ArtistStorage {
 
 	public Artist updateArtistName(Artist artist, String name) {
 		artist.updateArtistName(name);
+		artistRepo.save(artist);
+		return artist;
+	}
+
+	public Artist updateArtistAll(Artist artist, String name, String recordLabel, String hometown) {
+		artist.updateArtistHometown(hometown);
+		artist.updateArtistName(name);
+		artist.updateArtistRecordLabel(recordLabel);
 		artistRepo.save(artist);
 		return artist;
 	}

@@ -3,7 +3,6 @@ package org.wcci.albums.entities;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,7 +20,7 @@ public class Album {
 	private Long id;
 	@OneToMany
 	private List<Song> songList;
-	private int publishYear;
+	private String publishYear;
 	private String title;
 	@JsonIgnore
 	@ManyToOne
@@ -55,7 +54,7 @@ public class Album {
 		return songList;
 	}
 
-	public int getPublishYear() {
+	public String getPublishYear() {
 		return publishYear;
 	}
 	
@@ -119,6 +118,16 @@ public class Album {
 
 	public void addComment(Comment comment) {
 		comments.add(comment);
+	}
+
+	public void updateYear(String year) {
+		this.publishYear = year;
+		
+	}
+
+	public void updateTitle(String title) {
+		this.title = title;
+		
 	}
 	
 }

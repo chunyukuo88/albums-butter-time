@@ -54,9 +54,15 @@ public class AlbumController {
 	}
 	
 	@DeleteMapping("/{id}/remove")
-	public void removeArtist(@PathVariable Long id) {
+	public void removeAlbum(@PathVariable Long id) {
 		Album album = albumStorage.findAlbumById(id);
 		albumStorage.removeAlbum(album);
+	}
+	
+	@PostMapping("/{id}/{year}/{title}")
+	public Album editAll(@PathVariable Long id, @PathVariable String year, @PathVariable String title) {
+		Album album = albumStorage.findAlbumById(id);
+		return albumStorage.updateAlbumAll(album, year, title);
 	}
 
 }

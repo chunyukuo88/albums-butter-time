@@ -70,4 +70,11 @@ public class AlbumStorage {
 	private Iterable<Album> findAllAlbumsByArtist(Artist artist) {
 		return albumRepo.findAllByArtist(artist);
 	}
+
+	public Album updateAlbumAll(Album album, String year, String title) {
+		album.updateYear(year);
+		album.updateTitle(title);
+		albumRepo.save(album);
+		return album;
+	}
 }
