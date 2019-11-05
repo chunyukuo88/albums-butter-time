@@ -3,6 +3,7 @@ package org.wcci.albums.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Artist;
 import org.wcci.albums.entities.Comment;
+import org.wcci.albums.entities.Song;
 import org.wcci.albums.storages.AlbumStorage;
 import org.wcci.albums.storages.ArtistStorage;
 
@@ -49,6 +51,12 @@ public class AlbumController {
 		Album album = new Album(title, artist);
 		return albumStorage.addAlbum(album);
 
+	}
+	
+	@DeleteMapping("/{id}/remove")
+	public void removeArtist(@PathVariable Long id) {
+		Album album = albumStorage.findAlbumById(id);
+		albumStorage.removeAlbum(album);
 	}
 
 }

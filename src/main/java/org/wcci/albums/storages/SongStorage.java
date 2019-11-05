@@ -2,13 +2,16 @@ package org.wcci.albums.storages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Song;
 import org.wcci.albums.exception.SongNotFound;
 import org.wcci.albums.repositories.SongRepository;
+
+import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Service
 public class SongStorage {
 
 	@Autowired
@@ -23,7 +26,7 @@ public class SongStorage {
 	}
 
 	public Iterable<Song> findAllSongs() {
-		return songRepo.findAll();
+		return songRepo.findAllByOrderByIdDesc();
 	}
 
 	public Song findSongById(Long id) {
@@ -33,6 +36,19 @@ public class SongStorage {
 		}
 		
 		return song.get();
+	}
+
+	public void removeSongsByAlbum(Album album) {
+		List<Song> selectedSongs = (List<Song>) findAllSongsByAlbum(album);
+		
+		for (Song song : selectedSongs) {
+			songRepo.delete(song);
+		}
+		
+	}
+
+	private Iterable<Song> findAllSongsByAlbum(Album album) {
+		return songRepo.findAllByAlbum(album);
 	}
 	
 	
