@@ -3,7 +3,6 @@ package org.wcci.albums.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.wcci.albums.entities.Album;
-import org.wcci.albums.entities.Artist;
 import org.wcci.albums.entities.Song;
 
 @Repository

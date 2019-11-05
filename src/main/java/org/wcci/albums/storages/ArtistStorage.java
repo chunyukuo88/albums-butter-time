@@ -1,10 +1,8 @@
 package org.wcci.albums.storages;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.wcci.albums.entities.Artist;
 import org.wcci.albums.exception.ArtistNotFound;
@@ -17,8 +15,6 @@ public class ArtistStorage {
 	private ArtistRepository artistRepo;
 	@Autowired
 	private AlbumStorage albumStorage;
-	@Autowired
-	private SongStorage songStorage;
 
 	public Artist addArtist(Artist artist) {
 		return artistRepo.save(artist);

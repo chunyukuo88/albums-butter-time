@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.wcci.albums.entities.Album;
-import org.wcci.albums.entities.Artist;
 import org.wcci.albums.entities.Song;
 import org.wcci.albums.storages.AlbumStorage;
 import org.wcci.albums.storages.SongStorage;
@@ -40,9 +39,16 @@ public class SongController {
 		return songStorage.addSong(song);
 	}
 	
+	@PostMapping("/{id}/{duration}/{title}")
+	public Song editAll(@PathVariable Long id, @PathVariable int duration, @PathVariable String title) {
+		Song song = songStorage.findSongById(id);
+		return songStorage.updateSongAll(song, duration, title);
+	}
+	
 	@DeleteMapping("/{id}/remove")
-	public void removeArtist(@PathVariable Long id) {
+	public void removeSong(@PathVariable Long id) {
 		Song song = songStorage.findSongById(id);
 		songStorage.removeSong(song);
 	}
+	
 }

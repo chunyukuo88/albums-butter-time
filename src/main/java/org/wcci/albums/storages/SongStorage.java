@@ -1,7 +1,6 @@
 package org.wcci.albums.storages;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Song;
@@ -49,6 +48,13 @@ public class SongStorage {
 
 	private Iterable<Song> findAllSongsByAlbum(Album album) {
 		return songRepo.findAllByAlbum(album);
+	}
+
+	public Song updateSongAll(Song song, int duration, String title) {
+		song.updateDuration(duration);
+		song.updateTitle(title);
+		songRepo.save(song);
+		return song;
 	}
 	
 	

@@ -1,7 +1,5 @@
 package org.wcci.albums.controllers;
 
-import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +17,6 @@ public class ArtistController {
 
 	@Autowired
 	private ArtistStorage artistStorage;
-	// @Autowired
-	// private AlbumStorage albumStorage;
-	// @Autowired
-	// private SongStorage songStorage;
 
 	@GetMapping("")
 	public Iterable<Artist> getArtists() {

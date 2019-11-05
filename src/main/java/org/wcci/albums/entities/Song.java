@@ -63,6 +63,16 @@ public class Song {
 		this.tags.add(tag);
 	}
 	
+	public void updateTitle(String title) {
+		this.title = title;
+	}
+	
+	public void updateDuration(int duration) {
+		this.duration = duration;
+	}
+	
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

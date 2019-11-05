@@ -4,15 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.wcci.albums.entities.Album;
 import org.wcci.albums.entities.Artist;
 import org.wcci.albums.entities.Comment;
-import org.wcci.albums.entities.Song;
 import org.wcci.albums.entities.Tag;
 import org.wcci.albums.exception.AlbumNotFound;
-import org.wcci.albums.exception.SongNotFound;
 import org.wcci.albums.repositories.AlbumRepository;
 
 @Service
@@ -20,8 +17,6 @@ public class AlbumStorage {
 
 	@Autowired
 	private AlbumRepository albumRepo;
-	@Autowired
-	private ArtistStorage artistStorage;
 	@Autowired
 	private SongStorage songStorage;
 
