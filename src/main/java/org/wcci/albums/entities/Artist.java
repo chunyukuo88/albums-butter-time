@@ -65,6 +65,18 @@ public class Artist {
 		this.name = name;
 	}
 	
+	public void updateArtistDob(LocalDate dob) {
+		this.dateOfBirth= dob;
+	}
+	
+	public void updateArtistHometown(String hometown) {
+		this.hometown= hometown; 
+	}
+	
+	public void updateArtistRecordLabel(String recordLabel) {
+		this.recordLabel= recordLabel; 
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

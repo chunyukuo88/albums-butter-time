@@ -1,5 +1,7 @@
 package org.wcci.albums.controllers;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,38 +18,44 @@ import org.wcci.albums.storages.ArtistStorage;
 public class ArtistController {
 
 	@Autowired
-	private ArtistStorage artistStorage;	
-//	@Autowired
-//	private AlbumStorage albumStorage;
-//	@Autowired
-//	private SongStorage songStorage;
-	
-	
+	private ArtistStorage artistStorage;
+	// @Autowired
+	// private AlbumStorage albumStorage;
+	// @Autowired
+	// private SongStorage songStorage;
+
 	@GetMapping("")
 	public Iterable<Artist> getArtists() {
 		return artistStorage.findAllArtists();
 	}
-	
+
 	@GetMapping("/{id}")
 	public Artist getSingleArtist(@PathVariable Long id) {
 		return artistStorage.findArtistById(id);
 	}
-	
+
 	@PostMapping("/{name}")
 	public Artist addArtist(@PathVariable String name) {
 		Artist artist = new Artist(name);
 		return artistStorage.addArtist(artist);
 	}
-	
+
 	@DeleteMapping("/{id}/remove")
 	public void removeArtist(@PathVariable Long id) {
 		Artist artist = artistStorage.findArtistById(id);
 		artistStorage.removeArtist(artist);
 	}
-	
+
 	@PatchMapping("/{id}/{name}")
 	public Artist editArtist(@PathVariable Long id, @PathVariable String name) {
 		Artist artist = artistStorage.findArtistById(id);
 		return artistStorage.updateArtistName(artist, name);
+	}
+
+	@PostMapping("/{id}/{name}/{RecordLabel}/{Hometown}")
+	public Artist editAll(@PathVariable Long id, @PathVariable String name, 
+			@PathVariable String RecordLabel, @PathVariable String Hometown) {
+		Artist artist = artistStorage.findArtistById(id);
+		return artistStorage.updateArtistAll(artist, name, RecordLabel, Hometown);
 	}
 }
