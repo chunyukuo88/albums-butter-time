@@ -33,6 +33,11 @@ public class Song {
 	protected Song() {
 	}
 
+//	Dummy constructor for front-end testing
+	public Song(String title) {
+		this.title = title;
+	}
+	
 	public Song(String title, int duration, Album album) {
 		this.duration = duration;
 		this.title = title;

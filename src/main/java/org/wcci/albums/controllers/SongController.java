@@ -45,6 +45,13 @@ public class SongController {
 		return songStorage.updateSongAll(song, duration, title);
 	}
 	
+//	remove this later
+	@PostMapping("/{title}")
+	public Song addSongWithTitle(@PathVariable String title) {
+		Song song = new Song(title);
+		return songStorage.addSong(song);
+	}
+	
 	@DeleteMapping("/{id}/remove")
 	public void removeSong(@PathVariable Long id) {
 		Song song = songStorage.findSongById(id);
