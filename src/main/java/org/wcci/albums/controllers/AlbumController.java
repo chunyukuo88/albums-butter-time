@@ -3,6 +3,7 @@ package org.wcci.albums.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -17,6 +18,7 @@ import org.wcci.albums.entities.Comment;
 import org.wcci.albums.storages.AlbumStorage;
 import org.wcci.albums.storages.ArtistStorage;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/albums")
 public class AlbumController {
@@ -41,7 +43,6 @@ public class AlbumController {
 	public Album addComment(@PathVariable long id, @RequestBody Comment comment) {
 		Album album = albumStorage.findAlbumById(id);
 		return albumStorage.addComment(comment, album);
-
 	}
 
 	@PostMapping("/add-album/{artistId}/{title}")
@@ -49,7 +50,6 @@ public class AlbumController {
 		Artist artist = artistStorage.findArtistById(artistId);
 		Album album = new Album(title, artist);
 		return albumStorage.addAlbum(album);
-
 	}
 	
 	@DeleteMapping("/{id}/remove")
