@@ -1,6 +1,7 @@
 package org.wcci.albums.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.wcci.albums.entities.Artist;
 import org.wcci.albums.storages.ArtistStorage;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/artists")
 public class ArtistController {
