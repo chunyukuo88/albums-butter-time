@@ -19,14 +19,11 @@ public class Song {
 	private String title;
 	private String link;
 	private int duration;
-
 	@JsonIgnore
 	@ManyToOne
 	private Album album;
-	
 	@ManyToMany
 	private List<Tag> tags;
-	
 	@ManyToMany
 	private List<Rating> ratings;
 
