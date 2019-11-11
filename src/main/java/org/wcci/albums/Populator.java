@@ -53,19 +53,19 @@ public class Populator implements CommandLineRunner{
 		
 
 		artist = new Artist("Nuck Chorris");		
+		artist = artistStorage.addArtist(artist);		
 		album = new Album("Annihilating Entire Karate Schools", artist);		
-		artistStorage.addArtist(artist);		
+		albumStorage.addAlbum(album);
+		song = new Song("Booyah", 260, album);
+		songStorage.addSong(song);
+		album = new Album("Learning Italian with Nuck Chorris", artist);
 		albumStorage.addAlbum(album);
 		
 		artist = new Artist("George Straaaaateeee");
+		artistStorage.addArtist(artist);		
 		album = new Album("Country Twang", artist);
-		song = new Song("Booyah", 260, album);
-//		Comment comment = new Comment("Internet Troll", "This is my favorite.");
-//		albumStorage.addComment(album, comment);
-		
-		artist = new Artist("Maurice Ravel");
-		album = new Album("Orchestral Works", artist);
-		song = new Song("First Piano Concerto", 2500, album);
+		albumStorage.addAlbum(album);
+
 	
 	}
 

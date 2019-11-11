@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Artist {
 
@@ -20,7 +22,6 @@ public class Artist {
 	private LocalDate dateOfBirth;
 	private String recordLabel;
 	private String hometown;
-	
 	@OneToMany(mappedBy="artist", cascade = CascadeType.ALL)
 	private List<Album> albums;
 	
