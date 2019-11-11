@@ -1,5 +1,6 @@
 package org.wcci.albums.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -18,7 +19,7 @@ public class Album {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToMany
+	@OneToMany(mappedBy="album")
 	private List<Song> songList;
 	private String publishYear;
 	private String title;
@@ -37,6 +38,7 @@ public class Album {
 	public Album(String title, Artist artist) {
 		this.title = title;
 		this.artist = artist;
+		this.songList = new ArrayList<Song>();
 	}
 	
 	public String getTitle() {

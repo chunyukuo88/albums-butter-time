@@ -28,13 +28,13 @@ public class Populator implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		Artist artist = new Artist("Chuck Norris");
-		artistStorage.addArtist(artist);
-		
+		artist = artistStorage.addArtist(artist);
 		Album album = new Album("Chucky Gets Lucky", artist);
 		albumStorage.addAlbum(album);
-		
 		Song song = new Song("My first song", 90, album);
 		songStorage.addSong(song);
+		Song luckyCharms = new Song("Lucky Charms", 888, album);
+		songStorage.addSong(luckyCharms);
 		
 		Rating rating = new Rating(5);
 		ratingsStorage.addRatings(rating);
@@ -52,12 +52,15 @@ public class Populator implements CommandLineRunner{
 		ratingsStorage.addRatings(rating);
 		
 
-		artist = new Artist("Nuck Chorris");		
-		artist = artistStorage.addArtist(artist);		
-		album = new Album("Annihilating Entire Karate Schools", artist);		
-		albumStorage.addAlbum(album);
-		song = new Song("Booyah", 260, album);
-		songStorage.addSong(song);
+		Artist NuckChorris = new Artist("Nuck Chorris");		
+		artist = artistStorage.addArtist(NuckChorris);		
+		Album karateSchools = new Album("Annihilating Entire Karate Schools", artist);		
+		album = albumStorage.addAlbum(karateSchools);
+		Song booyah = new Song("Booyah", 260, album);
+		song = songStorage.addSong(booyah);
+		Song secondSong = new Song("The Second Song", 222, album);
+		song = songStorage.addSong(secondSong);
+		
 		album = new Album("Learning Italian with Nuck Chorris", artist);
 		albumStorage.addAlbum(album);
 		
