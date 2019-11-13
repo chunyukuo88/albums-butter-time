@@ -20,7 +20,7 @@ import org.wcci.albums.storages.ArtistStorage;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/albums")
+@RequestMapping("/albums")
 public class AlbumController {
 
 	@Autowired
