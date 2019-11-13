@@ -76,6 +76,12 @@ public class Song {
 
 	
 	@Override
+	public String toString() {
+		return "Song [id=" + id + ", title=" + title + ", link=" + link + ", duration=" + duration + ", album=" + album
+				+ ", tags=" + tags + ", ratings=" + ratings + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

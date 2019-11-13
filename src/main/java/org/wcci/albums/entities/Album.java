@@ -80,6 +80,14 @@ public class Album {
 		this.ratings.add(rating);
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Album [id=" + id + ", songList=" + songList + ", publishYear=" + publishYear + ", title=" + title
+				+ ", artist=" + artist + ", ratings=" + ratings + ", tags=" + tags + ", comments=" + comments + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
