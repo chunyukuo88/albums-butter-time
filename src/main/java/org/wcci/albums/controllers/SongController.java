@@ -15,7 +15,7 @@ import org.wcci.albums.storages.SongStorage;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/songs")
+@RequestMapping("/songs")
 public class SongController {
 
 	@Autowired
