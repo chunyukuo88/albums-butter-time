@@ -38,6 +38,11 @@ public class AlbumController {
 	public Album fetchById(@PathVariable Long id) {
 		return albumStorage.findAlbumById(id);
 	}
+	
+	@GetMapping("/{id}/get-artist")
+	public Artist getArtistOfTheAlbum(@PathVariable Long id) {
+		return albumStorage.findAlbumById(id).getArtist();
+	}
 
 	@PatchMapping("/{id}/add-comment")
 	public Album addComment(@PathVariable long id, @RequestBody Comment comment) {
