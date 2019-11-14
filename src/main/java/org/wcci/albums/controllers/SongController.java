@@ -34,6 +34,11 @@ public class SongController {
 		return songStorage.findSongById(id);
 	}
 	
+	@GetMapping("/{songId}/album")
+	public Album getAlbum(@PathVariable Long songId) {
+		return songStorage.findSongById(songId).getAlbum();
+	}
+	
 	@PostMapping("/add-song/{albumId}/{songTitle}/{songDuration}")
 	public Song addSong(@PathVariable Long albumId, @PathVariable String songTitle, @PathVariable int songDuration) {
 		Album album = albumStorage.findAlbumById(albumId);
@@ -47,7 +52,6 @@ public class SongController {
 		return songStorage.updateSongAll(song, duration, title);
 	}
 	
-//	remove this later
 	@PostMapping("/{title}")
 	public Song addSongWithTitle(@PathVariable String title) {
 		Song song = new Song(title);
