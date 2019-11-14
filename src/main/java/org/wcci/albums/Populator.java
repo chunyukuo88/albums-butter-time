@@ -27,11 +27,11 @@ public class Populator implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Artist artist = new Artist("Chuck Norris");
+		Artist artist = new Artist("Chris Bacon");
 		artist = artistStorage.addArtist(artist);
-		Album album = new Album("Chucky Gets Lucky", artist);
+		Album album = new Album("Pigs in a blanket", artist);
 		albumStorage.addAlbum(album);
-		Song song = new Song("My first song", 90, album);
+		Song song = new Song("Sunday morning sizzle", 90, album);
 		songStorage.addSong(song);
 		Song luckyCharms = new Song("Lucky Charms", 888, album);
 		songStorage.addSong(luckyCharms);
@@ -52,21 +52,21 @@ public class Populator implements CommandLineRunner{
 		ratingsStorage.addRatings(rating);
 		
 
-		Artist NuckChorris = new Artist("Nuck Chorris");		
-		artist = artistStorage.addArtist(NuckChorris);		
-		Album karateSchools = new Album("Annihilating Entire Karate Schools", artist);		
-		album = albumStorage.addAlbum(karateSchools);
-		Song booyah = new Song("Booyah", 260, album);
-		song = songStorage.addSong(booyah);
-		Song secondSong = new Song("The Second Song", 222, album);
-		song = songStorage.addSong(secondSong);
+		Artist GerogeButter = new Artist("Geroge Butter");		
+		artist = artistStorage.addArtist(GerogeButter);		
+		Album TableSpoons = new Album("TableSpoons", artist);		
+		album = albumStorage.addAlbum(TableSpoons);
+		Song SticksOnSticks = new Song("Sticks on Sticks", 260, album);
+		song = songStorage.addSong(SticksOnSticks);
+		Song ChurnBabyChurn = new Song("Churn Baby Churn", 222, album);
+		song = songStorage.addSong(ChurnBabyChurn);
 		
-		album = new Album("Learning Italian with Nuck Chorris", artist);
+		album = new Album("Learning the spread", artist);
 		albumStorage.addAlbum(album);
 		
-		artist = new Artist("George Straaaaateeee");
+		artist = new Artist("Carter Cobb");
 		artistStorage.addArtist(artist);		
-		album = new Album("Country Twang", artist);
+		album = new Album("Stocks a mile high", artist);
 		albumStorage.addAlbum(album);
 
 	
