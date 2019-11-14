@@ -34,7 +34,7 @@ public class SongController {
 		return songStorage.findSongById(id);
 	}
 	
-	@PostMapping("/{albumId}/{songTitle}/{songDuration}")
+	@PostMapping("/add-song/{albumId}/{songTitle}/{songDuration}")
 	public Song addSong(@PathVariable Long albumId, @PathVariable String songTitle, @PathVariable int songDuration) {
 		Album album = albumStorage.findAlbumById(albumId);
 		Song song = new Song(songTitle, songDuration, album);
