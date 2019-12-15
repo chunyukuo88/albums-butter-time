@@ -66,7 +66,7 @@ public class Populator implements CommandLineRunner{
 		
 		artist = new Artist("Carter Cobb");
 		artistStorage.addArtist(artist);		
-		album = new Album("Stocks a mile high", artist);
+		album = new Album("Stalks a Mile High", artist);
 		albumStorage.addAlbum(album);
 
 	
